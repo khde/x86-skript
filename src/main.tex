@@ -1,0 +1,153 @@
+\documentclass[12pt, a4paper, utf8]{book}
+
+\usepackage[ngerman]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{etoolbox}
+
+\title{x86-Assembly \\ \small{amd64 unter Linux}}
+\author{github.com/khde}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\tableofcontents{}
+
+\chapter*{Vorwort}
+
+\part{Grundlagen}
+
+
+\part{Einstieg in Assembly}
+\chapter{Aufbau}
+\section{Struktur}
+\subsection{.text Sektion}
+\subsection{.data Sektion}
+\subsection{.bss Sektion}
+\subsection{Weitere Sektionen}
+\section{Syntax}
+    Intel vs AT\&T
+    Opcode, Mnemonic
+\section{Adressiermoduse}
+    Register, Speicher, Direkt
+\section{Erstes Programm}
+    Hallo Welt
+% \chapter{Anweisungen}
+\chapter{Datenübertragung}
+\section{mov}
+% \section{movsx, movsxd}
+% \section{movzx}
+\section{lea}
+\section{xchg}
+\chapter{Ganzzahlige Arithmetik}
+\section{Addieren}
+\subsection{add}
+\subsection{adc}
+\subsection{xadd}
+\section{Subtrahieren}
+\subsection{sub}
+\subsection{sbb}
+\section{Multiplizieren}
+\subsection{mul}
+\subsection{imul}
+\section{Dividieren}
+\subsection{div}
+\subsection{idiv}
+\section{Inkrement inc}
+\section{Dekrement dec}
+\chapter{Logik}
+\section{and}
+\section{or}
+\section{not}
+\section{xor}
+\section{test}
+\chapter{Bedingtes Ausführen}
+\section{Springen jmp}
+\section{Bedingtes Springen cmp, jCC}
+\section{rflags-Register}
+    jz, jnz, je, jne, jg, jge, jl, jle, ja, jae, jb, jbe, jo, js, jecxz
+% \section{cmpsb, cmpsw, cmpsd, cmpsq, cmpxchg}
+\section{loop, loopne}
+% \section{cmove, cmovl, cmova}
+\section{rflags Manipulieren}
+\subsection{Carry-Flag}
+    stc, clc, cmc
+\subsection{Direction-Flag}
+    std, cld
+\subsection{Interrupt-Flag}
+    sti, cli
+\section{lahf, sahf}
+\chapter{Bit Operationen}
+\section{Bit Shifting}
+\subsection{Logischer Shift: shr, shl}
+\subsection{Arithmetischer Shift: sar, sal}
+\subsection{shld, shrd}
+\section{Bit Rotation}
+\subsection{ror}
+\subsection{rol}
+\subsection{rcr}
+\subsection{rcl}
+\chapter{Bit Manipulation}
+\section{bts}
+\section{btr}
+\section{bt}
+\section{bswap}
+    setCC
+\chapter{Stack}
+\section{Grundlagen des Stacks}
+\section{push, pop}
+\section{Die Rolle von rsp, rbp}
+% \section{pushad, pusha, pushfd, pushf, popad, popa, popfd, popf}
+\section{Stack Frame und Stack alignment}
+    push rbp
+    mov rbp, rsp
+\chapter{Funktionen}
+\section{Funktionen mit call und ret}
+\section{Funktionsprolog und Funktionsepilog}
+    enter, leave
+\section{Aufrufskonventionen}
+    System V AMD64 ABI
+\section{Registerinhalt sichern}
+    -caller, callee saved\\
+    -push eax\\
+     equivalent zu\\
+     sub esp, 4\\
+     mov [esp], eax\\
+    \\
+    -pop eax\\
+        sub esp, 4\\
+        mov [esp], eax\\
+\chapter{Systemaufrufe}
+    -Kernel im Ring 0 (Kernel-Modus)
+    -Zugriff auf gesamten CPU-Befehlssatz und Speicherbereich
+    -Normaler Prozess läuft im unprivilegierten Ringen 1 - 3 (Benutzer-Modus)
+\section{syscall, int 0x80}
+\chapter{Zeichenketten und Felder}
+\section{stosb/stosw/stosd}
+\section{movsb, rep stosb}
+\chapter{Kommandozeilenargumente}
+    int main(int argc, char *argv[])
+                 rdi         rsi
+\chapter{Weitere Befehle}
+\section{nop}
+    nop
+    xchg rax, rax
+    mov rax, rax
+\section{ASCII und BCD}
+\subsection{aaa}
+\subsection{aas}
+\subsection{aad}
+\subsection{aam}
+\subsection{daa}
+\subsection{das}
+    -Nicht Vorhanden in 64-Bit Modus
+
+\appendix
+\chapter{Wichtige Befehle}
+\chapter{Wichtige Linux-Syscalls}
+\chapter{Register}
+\chapter{Erweiterungen}
+\chapter{ASCII-Tabelle}
+
+\end{document}
